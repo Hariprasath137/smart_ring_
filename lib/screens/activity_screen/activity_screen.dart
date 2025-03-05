@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:smart_ring/widgets/card/activity_summary_card.dart';
-import 'package:smart_ring/widgets/card/score_card.dart';
 import 'package:smart_ring/widgets/slider_card/calories_slider_card.dart';
 import 'package:smart_ring/widgets/slider_card/mileage_slider_card.dart';
 import 'package:smart_ring/widgets/slider_card/steps_slider_card.dart';
@@ -54,12 +53,17 @@ class _ActivityScreenState extends State<ActivityScreen> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         iconTheme: const IconThemeData(color: Colors.white),
-        title: const Center(
-          child: Text(
-            "Activity",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios, size: 20),
         ),
+        title: Text(
+          "Activity",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {},
@@ -67,7 +71,9 @@ class _ActivityScreenState extends State<ActivityScreen> {
             color: Colors.white,
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/activity_description');
+            },
             icon: const Icon(Icons.question_mark_rounded),
             color: Colors.white,
           ),
@@ -96,6 +102,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        SizedBox(width: 60),
                         Text(
                           DateFormat("yyyy-MM-dd").format(_selectedDate),
                           style: const TextStyle(
@@ -171,10 +178,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
           const ActivitySummaryCard(),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ScoreCard()),
-              );
+              Navigator.pushNamed(context, '/score_card');
             },
             child: Card(
               color: Colors.grey[900],
