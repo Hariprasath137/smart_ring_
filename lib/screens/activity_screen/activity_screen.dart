@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:smart_ring/screens/activity_screen/activity_summary_card.dart';
-import 'package:smart_ring/screens/activity_screen/score_card.dart';
-import 'package:smart_ring/screens/activity_screen/slider_card.dart';
+import 'package:smart_ring/widgets/card/activity_summary_card.dart';
+import 'package:smart_ring/widgets/card/score_card.dart';
+import 'package:smart_ring/widgets/slider_card/calories_slider_card.dart';
+import 'package:smart_ring/widgets/slider_card/mileage_slider_card.dart';
+import 'package:smart_ring/widgets/slider_card/steps_slider_card.dart';
 
 class ActivityScreen extends StatefulWidget {
   const ActivityScreen({super.key});
@@ -241,7 +243,10 @@ class _ActivityScreenState extends State<ActivityScreen> {
           const SliderCard(),
 
           SizedBox(height: 4),
-          const SliderCard(),
+          const MileageSliderCard(),
+
+          SizedBox(height: 4),
+          const CaloriesSliderCard(),
         ],
       ),
     );

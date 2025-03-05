@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smart_ring/screens/activity_screen/activity_screen.dart';
-import 'package:smart_ring/screens/activity_screen/score_card.dart';
 import 'package:smart_ring/screens/heart_rate_screen/heart_rate_screen.dart';
 import 'package:smart_ring/screens/sleep_screen/sleep_screen.dart';
+import 'package:smart_ring/widgets/card/score_card.dart';
 
 class AppRoutes {
   static Route<dynamic>? generateRoute(RouteSettings settings) {

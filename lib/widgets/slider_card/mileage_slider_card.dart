@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:smart_ring/widgets/slider_card/steps_slider_card.dart';
 
-class SliderCard extends StatefulWidget {
-  const SliderCard({super.key});
+class MileageSliderCard extends StatefulWidget {
+  const MileageSliderCard({super.key});
 
   @override
-  State<SliderCard> createState() => _SliderCardState();
+  State<MileageSliderCard> createState() => _MileageSliderCardState();
 }
 
-class _SliderCardState extends State<SliderCard>
+class _MileageSliderCardState extends State<MileageSliderCard>
     with SingleTickerProviderStateMixin {
   double _sliderValue = 0.0;
 
@@ -50,9 +51,9 @@ class _SliderCardState extends State<SliderCard>
           children: [
             // "Steps" text in blue at top-left
             const Text(
-              "Steps",
+              "Mileage",
               style: TextStyle(
-                color: Colors.blue,
+                color: Colors.green,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -61,9 +62,18 @@ class _SliderCardState extends State<SliderCard>
             Center(
               child: Column(
                 children: [
-                  const Text(
-                    "0 Steps",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "0.00",
+                        style: TextStyle(color: Colors.white, fontSize: 40),
+                      ),
+                      const Text(
+                        "Km",
+                        style: TextStyle(color: Colors.white70, fontSize: 18),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 5),
                   // Updated moving time under "0 Steps"
@@ -74,7 +84,7 @@ class _SliderCardState extends State<SliderCard>
                 ],
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 30),
             // Graph representation
             SizedBox(
               width: double.infinity,
@@ -88,10 +98,18 @@ class _SliderCardState extends State<SliderCard>
                     );
                   });
                 },
+                onTapDown: (details) {
+                  setState(() {
+                    _sliderValue = (details.localPosition.dx / 300).clamp(
+                      0.0,
+                      1.0,
+                    );
+                  });
+                },
                 child: CustomPaint(painter: StepGraphPainter(_sliderValue)),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
             // Time labels under the third dotted line
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -146,81 +164,5 @@ class _SliderCardState extends State<SliderCard>
         ),
       ),
     );
-  }
-}
-
-class StepGraphPainter extends CustomPainter {
-  final double sliderValue;
-
-  StepGraphPainter(this.sliderValue);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint dashedPaint =
-        Paint()
-          ..color = Colors.grey
-          ..strokeWidth = 1
-          ..style = PaintingStyle.stroke;
-
-    Paint verticalLinePaint =
-        Paint()
-          ..color = Colors.blue
-          ..strokeWidth = 2;
-
-    // Adjusted Y positions to fit in smaller space
-    double topY = 20;
-    double middleY = 50;
-    double bottomY = 80;
-
-    double leftPadding = 20;
-
-    drawDashedLine(canvas, size, topY, dashedPaint, leftPadding);
-    drawDashedLine(canvas, size, middleY, dashedPaint, leftPadding);
-    drawDashedLine(canvas, size, bottomY, dashedPaint, leftPadding);
-
-    double verticalX = sliderValue * (size.width - leftPadding);
-    canvas.drawLine(
-      Offset(verticalX, 10),
-      Offset(verticalX, bottomY + 10),
-      verticalLinePaint,
-    );
-
-    double textX = size.width - 16;
-    drawText(canvas, "0.7K", textX, topY);
-    drawText(canvas, "0.3K", textX, middleY);
-    drawText(canvas, "0", textX, bottomY);
-  }
-
-  void drawDashedLine(
-    Canvas canvas,
-    Size size,
-    double y,
-    Paint paint,
-    double leftPadding,
-  ) {
-    double dashWidth = 10, dashSpace = 5, startX = 0;
-    while (startX < size.width - 30) {
-      canvas.drawLine(Offset(startX, y), Offset(startX + dashWidth, y), paint);
-      startX += dashWidth + dashSpace;
-    }
-  }
-
-  void drawText(Canvas canvas, String text, double x, double y) {
-    final textStyle = const TextStyle(
-      color: Colors.white,
-      fontSize: 12,
-    ); // Smaller font
-    final textSpan = TextSpan(text: text, style: textStyle);
-    final textPainter = TextPainter(
-      text: textSpan,
-      textDirection: TextDirection.ltr,
-    );
-    textPainter.layout();
-    textPainter.paint(canvas, Offset(x, y - 7));
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
   }
 }
