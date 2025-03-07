@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:smart_ring/widgets/card/heart_pie_chart.dart';
 import 'package:smart_ring/widgets/slider_card/heart_rate_slider_card.dart';
 
 class HeartRateScreen extends StatefulWidget {
@@ -187,6 +188,229 @@ class _HeartRateScreenState extends State<HeartRateScreen> {
 
           const SizedBox(height: 4),
           const HeartRateSliderCard(),
+
+          const SizedBox(height: 4),
+          Card(
+            color: Colors.grey[900],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        "--",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      SizedBox(height: 4),
+                      Text("Average", style: TextStyle(color: Colors.white70)),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        "|",
+                        style: TextStyle(color: Colors.white24, fontSize: 30),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        "--",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      SizedBox(height: 4),
+                      Text("Minimum", style: TextStyle(color: Colors.white70)),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        "|",
+                        style: TextStyle(color: Colors.white24, fontSize: 20),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        "--",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      SizedBox(height: 4),
+                      Text("Maximum", style: TextStyle(color: Colors.white70)),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 4),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/data_details');
+            },
+            child: Card(
+              color: Colors.grey[900],
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Data Details",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.white70,
+                      size: 18,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 4),
+          Card(
+            color: Colors.grey[900],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Real-time heart rate",
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(Icons.favorite, color: Colors.redAccent),
+                              Text("--", style: TextStyle(color: Colors.white)),
+                            ],
+                          ),
+                          SizedBox(width: 25),
+                          Text(
+                            "bpm",
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 10,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: TextButton(
+                        onPressed: () {},
+                        style: TextButton.styleFrom(
+                          backgroundColor:
+                              Colors
+                                  .grey[850], // Slightly different grey for contrast
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              16.0,
+                            ), // Rounded corners
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 14.0,
+                          ), // Padding for better height
+                        ),
+                        child: const Text(
+                          "Click to Start Measurement",
+                          style: TextStyle(color: Colors.white, fontSize: 14),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 4),
+          SizedBox(
+            width: double.infinity,
+            height: 120,
+            child: Card(
+              color: Colors.grey[900],
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Last 7 times trends",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+
+                        Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/data_details');
+                              },
+                              child: Row(
+                                children: [
+                                  const Text(
+                                    "More",
+                                    style: TextStyle(color: Colors.white70),
+                                  ),
+                                  Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: 16,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 15),
+                    Divider(color: Colors.white24, thickness: 1),
+                    const SizedBox(height: 15),
+                    Center(
+                      child: Text(
+                        "No Data Yet",
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 4),
+          const HeartPieChart(),
         ],
       ),
     );

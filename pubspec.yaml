@@ -64,6 +64,9 @@ flutter:
     - assets/heartrate.jpg
     - assets/sleep.jpg
     - assets/sport.jpg
+    - assets/no_data.png
+    - assets/data_not_yet.jpg
+    - assets/datadetails.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

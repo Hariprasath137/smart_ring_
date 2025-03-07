@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_ring/screens/activity_screen/activity_screen.dart';
+import 'package:smart_ring/screens/heart_rate_screen/data_details.dart';
 import 'package:smart_ring/screens/heart_rate_screen/heart_rate_screen.dart';
 import 'package:smart_ring/screens/sleep_screen/sleep_screen.dart';
 import 'package:smart_ring/widgets/card/activity_description_card.dart';
@@ -18,6 +19,8 @@ class AppRoutes {
         return _slideTransition(ScoreCard());
       case '/activity_description':
         return _slideTransition(ActivityDescription());
+      case '/data_details':
+        return _slideTransition(DataDetails());
       default:
         return null; // Unknown route
     }
