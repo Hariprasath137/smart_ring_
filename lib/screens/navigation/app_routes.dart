@@ -3,6 +3,7 @@ import 'package:smart_ring/screens/activity_screen/activity_screen.dart';
 import 'package:smart_ring/screens/heart_rate_screen/data_details.dart';
 import 'package:smart_ring/screens/heart_rate_screen/heart_rate_screen.dart';
 import 'package:smart_ring/screens/sleep_screen/sleep_screen.dart';
+import 'package:smart_ring/screens/sport_record_screen/sport_screen.dart';
 import 'package:smart_ring/widgets/card/activity_description_card.dart';
 import 'package:smart_ring/widgets/card/score_card.dart';
 
@@ -21,6 +22,8 @@ class AppRoutes {
         return _slideTransition(ActivityDescription());
       case '/data_details':
         return _slideTransition(DataDetails());
+      case '/sport_screen':
+        return _slideTransition(SportRecordScreen());
       default:
         return null; // Unknown route
     }

@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'title': 'Sport Record',
       'subtitle': 'Please wear a smart ring to know your exercise status',
       'icon': Icons.directions_run,
-      'route': '/sport_record',
+      'route': '/sport_screen',
       'image': 'assets/sport.jpg',
     },
   ];
