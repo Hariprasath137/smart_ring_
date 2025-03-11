@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'content': 'You have not bound the ring yet',
       'buttonText': 'Bind immediately',
       'icon': Icons.bluetooth_searching,
-      'route': '/bind_ble',
+      'route': '/bluetooth_binding',
       'isStable': true,
     },
     {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_ring/bluetooth/bluetooth_binding.dart';
 import 'package:smart_ring/screens/activity_screen/activity_screen.dart';
 import 'package:smart_ring/screens/heart_rate_screen/data_details.dart';
 import 'package:smart_ring/screens/heart_rate_screen/heart_rate_screen.dart';
@@ -24,6 +25,8 @@ class AppRoutes {
         return _slideTransition(DataDetails());
       case '/sport_screen':
         return _slideTransition(SportRecordScreen());
+      case '/bluetooth_binding':
+        return _slideTransition(BluetoothScreen());
       default:
         return null; // Unknown route
     }
