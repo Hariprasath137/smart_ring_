@@ -164,7 +164,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     cards[index]['route'],
                                   );
                                 },
-                                child: Text(cards[index]['buttonText']),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue,
+                                ),
+                                child: Text(
+                                  cards[index]['buttonText'],
+                                  style: TextStyle(color: Colors.white),
+                                ),
                               ),
                             ],
                           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_ring/screens/activity_screen/activity_screen.dart';
 import 'package:smart_ring/screens/home_screen/home_screen.dart';
+import 'package:smart_ring/screens/profile_screen/profile_screen.dart';
 import 'package:smart_ring/screens/sleep_screen/sleep_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
     HomeScreen(),
     ActivityScreen(),
     SleepScreen(),
-    ProfileScreen(),
+    MyProfile(),
   ];
 
   void _onItemTapped(int index) {
@@ -50,17 +51,6 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Profile Screen', style: TextStyle(color: Colors.white)),
     );
   }
 }

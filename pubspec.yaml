@@ -68,7 +68,8 @@ flutter:
     - assets/data_not_yet.jpg
     - assets/datadetails.png
     - assets/run.gif
-
+    - assets/icons/home.png
+    - assets/icons/smart-ring.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

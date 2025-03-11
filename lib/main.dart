@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_ring/screens/navigation/app_routes.dart';
 import 'package:smart_ring/screens/navigation/bottom_navbar.dart';
+// import 'package:smart_ring/screens/navigation/bottom_navbar.dart';
 
 void main() {
   runApp(MyApp());
